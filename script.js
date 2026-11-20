@@ -60,7 +60,7 @@ const alertBox=(t,m)=>modal(t,m,[],null,'Okay');
 const add=(store_,extra)=>async v=>{await DB.put(store_,{...v,...(extra||{})})};
 
 /* ---------- Views ---------- */
-const pw=(id,label,ph)=>`<div class="f">${label} *</div><div class="pw"><input class="in" id="${id}" type="password" placeholder="${ph}" autocomplete="off"><button type="button" data-a="eye" data-t="${id}" aria-label="Show password">👁</button></div>`;
+const pw=(id,label,ph)=>`<div class="f">${label} *</div><div class="pw"><input class="in" id="${id}" type="password" placeholder="${ph}" autocomplete="off"><button type="button" data-a="eye" data-t="${id}" aria-label="Show password"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/><path class="slash" d="M4 4l16 16" style="display:none"/></svg></button></div>`;
 const authView=()=>S.view==='login'?`<div class="auth c" style="text-align:left">${LEAF}<h1 class="c">Project Hayati</h1>
 <p class="c mut" style="margin:6px 0 24px">Welcome back!<br>Log in to continue.</p>
 <div class="f">Email *</div><input class="in" id="em" type="email" placeholder="name@example.com">${pw('pw','Password','Enter your password')}
@@ -153,7 +153,7 @@ async function render(){
 /* ---------- Actions ---------- */
 const A={
   view:e=>{S.view=e.t;render()},
-  eye:e=>{const i=$('#'+e.t);i.type=i.type==='password'?'text':'password'},
+  eye:(e,el)=>{const i=$('#'+e.t),show=i.type==='password';i.type=show?'text':'password';el.querySelector('.slash').style.display=show?'':'none';el.setAttribute('aria-label',show?'Hide password':'Show password')},
   forgot:()=>modal('Forgot password?','Enter your email and we’ll send you a link to set a new password.',
     [{k:'email',label:'Email',type:'email',ph:'name@example.com',val:($('#em')&&$('#em').value.trim())||''}],
     async v=>{
