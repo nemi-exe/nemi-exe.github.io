@@ -986,10 +986,11 @@ const A = {
     ),
   account: () =>
     alertBox('Account', `Name: ${S.user.name}\nEmail: ${S.user.email}`),
-  about: () =>
-    alertBox(
+    about:
+    ()=>alertBox
+    (
       'About Hayati',
-      'Hayati helps students manage academics, wellness and money in one app. Your data is saved to your account.'
+      'Hayati means “my life” in Arabic. This app helps students stay balanced by keeping school tasks, class schedules, water, sleep, routines and money together, with everything saved to your account.'
     ),
   async logout() {
     try {
