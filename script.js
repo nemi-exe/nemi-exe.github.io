@@ -986,12 +986,7 @@ const A = {
     ),
   account: () =>
     alertBox('Account', `Name: ${S.user.name}\nEmail: ${S.user.email}`),
-    about:
-    ()=>alertBox
-    (
-      'About Hayati',
-      'Hayati means “my life” in Arabic. This app helps students stay balanced by keeping school tasks, class schedules, water, sleep, routines and money together, with everything saved to your account.'
-    ),
+      about:()=>alertBox('About Hayati','Hayati means “my life” in Arabic. This app helps students stay balanced by keeping school tasks, class schedules, water, sleep, routines and money together, with everything saved to your account.'),
   async logout() {
     try {
       await sb.auth.signOut();
