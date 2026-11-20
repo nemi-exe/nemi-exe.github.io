@@ -1,5 +1,5 @@
 :root {
-  --bg: #002a52;
+    --bg: #002a52;
     --fg: #DCF4A2;
     --mut: #9fbf85;
     --card: #0055A4;
@@ -562,3 +562,5 @@ h2 {
   display: block;
   pointer-events: none;
 }
+
+md p{white-space:pre-line}
