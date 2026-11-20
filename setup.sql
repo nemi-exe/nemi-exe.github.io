@@ -1,91 +1,142 @@
--- Project Hayati: run this once in Supabase > SQL Editor > New query > Run
-
-create table if not exists public.tasks (
-  id bigint generated always as identity primary key,
-  uid uuid not null default auth.uid() references auth.users(id) on delete cascade,
-  "name" text not null default '',
-  "code" text not null default '',
-  "desc" text not null default '',
-  "due" text not null default '',
-  "done" boolean not null default false
+CREATE TABLE IF NOT EXISTS public.tasks (
+  id     bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  uid    uuid NOT NULL DEFAULT auth.uid() REFERENCES auth.users(id) ON DELETE CASCADE,
+  "name" text NOT NULL DEFAULT '',
+  "code" text NOT NULL DEFAULT '',
+  "desc" text NOT NULL DEFAULT '',
+  "due"  text NOT NULL DEFAULT '',
+  "done" boolean NOT NULL DEFAULT false
 );
-create index if not exists tasks_uid_idx on public.tasks(uid);
-alter table public.tasks enable row level security;
-drop policy if exists "tasks: own rows" on public.tasks;
-create policy "tasks: own rows" on public.tasks for all to authenticated
-  using (uid = (select auth.uid())) with check (uid = (select auth.uid()));
-grant select, insert, update, delete on public.tasks to authenticated;
 
-create table if not exists public.classes (
-  id bigint generated always as identity primary key,
-  uid uuid not null default auth.uid() references auth.users(id) on delete cascade,
-  "code" text not null default '',
-  "day" text not null default '',
-  "start" text not null default '',
-  "end" text not null default '',
-  "room" text not null default '',
-  "inst" text not null default ''
+CREATE INDEX IF NOT EXISTS tasks_uid_idx ON public.tasks (uid);
+
+ALTER TABLE public.tasks ENABLE ROW LEVEL SECURITY;
+
+DROP POLICY IF EXISTS "tasks: own rows" ON public.tasks;
+CREATE POLICY "tasks: own rows"
+  ON public.tasks
+  FOR ALL
+  TO authenticated
+  USING (uid = (SELECT auth.uid()))
+  WITH CHECK (uid = (SELECT auth.uid()));
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON public.tasks TO authenticated;
+
+
+CREATE TABLE IF NOT EXISTS public.classes (
+  id      bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  uid     uuid NOT NULL DEFAULT auth.uid() REFERENCES auth.users(id) ON DELETE CASCADE,
+  "code"  text NOT NULL DEFAULT '',
+  "day"   text NOT NULL DEFAULT '',
+  "start" text NOT NULL DEFAULT '',
+  "end"   text NOT NULL DEFAULT '',
+  "room"  text NOT NULL DEFAULT '',
+  "inst"  text NOT NULL DEFAULT ''
 );
-create index if not exists classes_uid_idx on public.classes(uid);
-alter table public.classes enable row level security;
-drop policy if exists "classes: own rows" on public.classes;
-create policy "classes: own rows" on public.classes for all to authenticated
-  using (uid = (select auth.uid())) with check (uid = (select auth.uid()));
-grant select, insert, update, delete on public.classes to authenticated;
 
-create table if not exists public.water (
-  id bigint generated always as identity primary key,
-  uid uuid not null default auth.uid() references auth.users(id) on delete cascade,
-  "ml" double precision not null default 0,
-  "date" text not null default '',
-  "time" text not null default ''
+CREATE INDEX IF NOT EXISTS classes_uid_idx ON public.classes (uid);
+
+ALTER TABLE public.classes ENABLE ROW LEVEL SECURITY;
+
+DROP POLICY IF EXISTS "classes: own rows" ON public.classes;
+CREATE POLICY "classes: own rows"
+  ON public.classes
+  FOR ALL
+  TO authenticated
+  USING (uid = (SELECT auth.uid()))
+  WITH CHECK (uid = (SELECT auth.uid()));
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON public.classes TO authenticated;
+
+
+CREATE TABLE IF NOT EXISTS public.water (
+  id     bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  uid    uuid NOT NULL DEFAULT auth.uid() REFERENCES auth.users(id) ON DELETE CASCADE,
+  "ml"   double precision NOT NULL DEFAULT 0,
+  "date" text NOT NULL DEFAULT '',
+  "time" text NOT NULL DEFAULT ''
 );
-create index if not exists water_uid_idx on public.water(uid);
-alter table public.water enable row level security;
-drop policy if exists "water: own rows" on public.water;
-create policy "water: own rows" on public.water for all to authenticated
-  using (uid = (select auth.uid())) with check (uid = (select auth.uid()));
-grant select, insert, update, delete on public.water to authenticated;
 
-create table if not exists public.sleep (
-  id bigint generated always as identity primary key,
-  uid uuid not null default auth.uid() references auth.users(id) on delete cascade,
-  "bed" text not null default '',
-  "wake" text not null default ''
+CREATE INDEX IF NOT EXISTS water_uid_idx ON public.water (uid);
+
+ALTER TABLE public.water ENABLE ROW LEVEL SECURITY;
+
+DROP POLICY IF EXISTS "water: own rows" ON public.water;
+CREATE POLICY "water: own rows"
+  ON public.water
+  FOR ALL
+  TO authenticated
+  USING (uid = (SELECT auth.uid()))
+  WITH CHECK (uid = (SELECT auth.uid()));
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON public.water TO authenticated;
+
+
+
+CREATE TABLE IF NOT EXISTS public.sleep (
+  id     bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  uid    uuid NOT NULL DEFAULT auth.uid() REFERENCES auth.users(id) ON DELETE CASCADE,
+  "bed"  text NOT NULL DEFAULT '',
+  "wake" text NOT NULL DEFAULT ''
 );
-create index if not exists sleep_uid_idx on public.sleep(uid);
-alter table public.sleep enable row level security;
-drop policy if exists "sleep: own rows" on public.sleep;
-create policy "sleep: own rows" on public.sleep for all to authenticated
-  using (uid = (select auth.uid())) with check (uid = (select auth.uid()));
-grant select, insert, update, delete on public.sleep to authenticated;
 
-create table if not exists public.routines (
-  id bigint generated always as identity primary key,
-  uid uuid not null default auth.uid() references auth.users(id) on delete cascade,
-  "name" text not null default '',
-  "when" text not null default '',
-  "doneOn" text not null default ''
+CREATE INDEX IF NOT EXISTS sleep_uid_idx ON public.sleep (uid);
+
+ALTER TABLE public.sleep ENABLE ROW LEVEL SECURITY;
+
+DROP POLICY IF EXISTS "sleep: own rows" ON public.sleep;
+CREATE POLICY "sleep: own rows"
+  ON public.sleep
+  FOR ALL
+  TO authenticated
+  USING (uid = (SELECT auth.uid()))
+  WITH CHECK (uid = (SELECT auth.uid()));
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON public.sleep TO authenticated;
+
+
+CREATE TABLE IF NOT EXISTS public.routines (
+  id       bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  uid      uuid NOT NULL DEFAULT auth.uid() REFERENCES auth.users(id) ON DELETE CASCADE,
+  "name"   text NOT NULL DEFAULT '',
+  "when"   text NOT NULL DEFAULT '',
+  "doneOn" text NOT NULL DEFAULT ''
 );
-create index if not exists routines_uid_idx on public.routines(uid);
-alter table public.routines enable row level security;
-drop policy if exists "routines: own rows" on public.routines;
-create policy "routines: own rows" on public.routines for all to authenticated
-  using (uid = (select auth.uid())) with check (uid = (select auth.uid()));
-grant select, insert, update, delete on public.routines to authenticated;
 
-create table if not exists public.tx (
-  id bigint generated always as identity primary key,
-  uid uuid not null default auth.uid() references auth.users(id) on delete cascade,
-  "type" text not null default '',
-  "cat" text not null default '',
-  "amt" double precision not null default 0,
-  "date" text not null default ''
+CREATE INDEX IF NOT EXISTS routines_uid_idx ON public.routines (uid);
+
+ALTER TABLE public.routines ENABLE ROW LEVEL SECURITY;
+
+DROP POLICY IF EXISTS "routines: own rows" ON public.routines;
+CREATE POLICY "routines: own rows"
+  ON public.routines
+  FOR ALL
+  TO authenticated
+  USING (uid = (SELECT auth.uid()))
+  WITH CHECK (uid = (SELECT auth.uid()));
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON public.routines TO authenticated;
+
+
+CREATE TABLE IF NOT EXISTS public.tx (
+  id     bigint GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  uid    uuid NOT NULL DEFAULT auth.uid() REFERENCES auth.users(id) ON DELETE CASCADE,
+  "type" text NOT NULL DEFAULT '',
+  "cat"  text NOT NULL DEFAULT '',
+  "amt"  double precision NOT NULL DEFAULT 0,
+  "date" text NOT NULL DEFAULT ''
 );
-create index if not exists tx_uid_idx on public.tx(uid);
-alter table public.tx enable row level security;
-drop policy if exists "tx: own rows" on public.tx;
-create policy "tx: own rows" on public.tx for all to authenticated
-  using (uid = (select auth.uid())) with check (uid = (select auth.uid()));
-grant select, insert, update, delete on public.tx to authenticated;
 
+CREATE INDEX IF NOT EXISTS tx_uid_idx ON public.tx (uid);
+
+ALTER TABLE public.tx ENABLE ROW LEVEL SECURITY;
+
+DROP POLICY IF EXISTS "tx: own rows" ON public.tx;
+CREATE POLICY "tx: own rows"
+  ON public.tx
+  FOR ALL
+  TO authenticated
+  USING (uid = (SELECT auth.uid()))
+  WITH CHECK (uid = (SELECT auth.uid()));
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON public.tx TO authenticated;
