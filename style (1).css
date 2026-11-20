@@ -1,6 +1,6 @@
-:root{--bg:#DCF4A2;--fg:#0055A4;--mut:#3a6a9c;--card:#0055A4;--cardfg:#DCF4A2;--soft:#cfeb8c;--line:#b7d27a;--bar:#0055A4;--barfg:#DCF4A2;--btn:#0055A4;--btnfg:#DCF4A2;--accent:#0055A4;--hi:#DCF4A2;--err:#9c1230;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#002a52;--fg:#DCF4A2;--mut:#9fbf85;--card:#0055A4;--cardfg:#DCF4A2;--soft:#003a73;--line:#14497a;--bar:#001d3a;--barfg:#DCF4A2;--btn:#DCF4A2;--btnfg:#002a52;--accent:#DCF4A2;--hi:#DCF4A2;--err:#ff9aa8}}
-:root[data-theme="dark"]{--bg:#002a52;--fg:#DCF4A2;--mut:#9fbf85;--card:#0055A4;--cardfg:#DCF4A2;--soft:#003a73;--line:#14497a;--bar:#001d3a;--barfg:#DCF4A2;--btn:#DCF4A2;--btnfg:#002a52;--accent:#DCF4A2;--hi:#DCF4A2;--err:#ff9aa8}
+:root{--bg:#F4FDAF;--fg:#210124;--mut:#65743A;--card:#394F49;--cardfg:#F4FDAF;--soft:#EFDD8D;--line:#cbc87f;--bar:#210124;--barfg:#F4FDAF;--btn:#65743A;--btnfg:#F4FDAF;--accent:#65743A;--hi:#EFDD8D;--err:#9c1230;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#210124;--fg:#F4FDAF;--mut:#a9b27a;--card:#394F49;--cardfg:#F4FDAF;--soft:#35103a;--line:#4a2a50;--bar:#170119;--barfg:#F4FDAF;--btn:#EFDD8D;--btnfg:#210124;--accent:#EFDD8D;--hi:#EFDD8D;--err:#ff9aa8}}
+:root[data-theme="dark"]{--bg:#210124;--fg:#F4FDAF;--mut:#a9b27a;--card:#394F49;--cardfg:#F4FDAF;--soft:#35103a;--line:#4a2a50;--bar:#170119;--barfg:#F4FDAF;--btn:#EFDD8D;--btnfg:#210124;--accent:#EFDD8D;--hi:#EFDD8D;--err:#ff9aa8}
 *{box-sizing:border-box;margin:0}
 html,body{height:100%}
 body{background:var(--bg);color:var(--fg);font:15px/1.4 Figtree,system-ui,sans-serif}
@@ -26,7 +26,7 @@ h2{font-size:18px;font-weight:800;margin:16px 0 8px}
 .btn.o{background:none;color:var(--fg);border:1px solid var(--fg)}
 .card{background:var(--card);color:var(--cardfg);border-radius:18px;padding:14px 16px}
 .grid{display:grid;grid-template-columns:1.1fr 1fr;gap:12px;margin-bottom:12px}
-.bar{height:6px;background:rgba(220,244,162,.3);border-radius:4px;overflow:hidden;margin:3px 0 8px}
+.bar{height:6px;background:rgba(244,253,175,.3);border-radius:4px;overflow:hidden;margin:3px 0 8px}
 .bar i{display:block;height:100%;background:var(--hi)}
 .row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
 .row b{flex:1;font-weight:500}
@@ -50,7 +50,7 @@ h2{font-size:18px;font-weight:800;margin:16px 0 8px}
 .dots{display:flex;gap:8px;justify-content:center;margin:14px}.dots i{width:8px;height:8px;border-radius:50%;background:var(--line)}.dots i.on{background:var(--fg)}
 .ck{width:20px;height:20px;accent-color:var(--accent)}
 
-
+/* ---------- Unique style layer ---------- */
 :root{--serif:'Instrument Serif',Georgia,serif}
 body{background-image:radial-gradient(var(--line) 1.3px,transparent 1.3px);background-size:18px 18px}
 .hd,.auth h1,.md h3,h2,.hello,.home .card>b{font-family:var(--serif);font-weight:400;letter-spacing:.2px}
@@ -60,7 +60,7 @@ h2{font-size:24px}
 .hello{font-size:44px;line-height:1.05}
 .hello i{font-style:italic;text-decoration:underline wavy var(--accent);text-decoration-thickness:2px;text-underline-offset:6px}
 
-
+/* Home cards: bold outlines, hard shadows, zig-zag colors and shapes */
 .home .card{border:2px solid var(--fg);box-shadow:5px 5px 0 var(--fg);border-radius:28px 8px 28px 8px;padding:16px 18px}
 .home>.card:nth-child(even),.home .grid .card:nth-child(even){border-radius:8px 28px 8px 28px}
 .home .grid .card:nth-child(2),.home>.card:nth-child(4){background:var(--bg);color:var(--fg)}
@@ -71,12 +71,12 @@ h2{font-size:24px}
 .home .bar{height:12px;border:1.5px solid var(--cardfg);background:transparent;border-radius:99px}
 .home .bar i{background:repeating-linear-gradient(45deg,var(--cardfg) 0 5px,transparent 5px 9px)}
 
-
+/* Floating pill nav */
 .nav{margin:0 12px 12px;padding:6px;gap:4px;border-radius:28px;box-shadow:4px 4px 0 var(--fg)}
 .nav button{border-radius:22px;padding:8px 0}
 .nav button.on{background:var(--hi);color:var(--bar)}
 .btn:active{transform:translate(2px,2px)}
 
-
+/* Password eye: drawn icon (no emoji font) */
 .pw button{top:50%;right:8px;transform:translateY(-50%);padding:8px;line-height:0;color:var(--fg);font-size:0}
 .pw button svg{display:block;pointer-events:none}
