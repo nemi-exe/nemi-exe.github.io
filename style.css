@@ -50,7 +50,7 @@ h2{font-size:18px;font-weight:800;margin:16px 0 8px}
 .dots{display:flex;gap:8px;justify-content:center;margin:14px}.dots i{width:8px;height:8px;border-radius:50%;background:var(--line)}.dots i.on{background:var(--fg)}
 .ck{width:20px;height:20px;accent-color:var(--accent)}
 
-/* ---------- Unique style layer ---------- */
+
 :root{--serif:'Instrument Serif',Georgia,serif}
 body{background-image:radial-gradient(var(--line) 1.3px,transparent 1.3px);background-size:18px 18px}
 .hd,.auth h1,.md h3,h2,.hello,.home .card>b{font-family:var(--serif);font-weight:400;letter-spacing:.2px}
@@ -60,7 +60,7 @@ h2{font-size:24px}
 .hello{font-size:44px;line-height:1.05}
 .hello i{font-style:italic;text-decoration:underline wavy var(--accent);text-decoration-thickness:2px;text-underline-offset:6px}
 
-/* Home cards: bold outlines, hard shadows, zig-zag colors and shapes */
+
 .home .card{border:2px solid var(--fg);box-shadow:5px 5px 0 var(--fg);border-radius:28px 8px 28px 8px;padding:16px 18px}
 .home>.card:nth-child(even),.home .grid .card:nth-child(even){border-radius:8px 28px 8px 28px}
 .home .grid .card:nth-child(2),.home>.card:nth-child(4){background:var(--bg);color:var(--fg)}
@@ -71,12 +71,12 @@ h2{font-size:24px}
 .home .bar{height:12px;border:1.5px solid var(--cardfg);background:transparent;border-radius:99px}
 .home .bar i{background:repeating-linear-gradient(45deg,var(--cardfg) 0 5px,transparent 5px 9px)}
 
-/* Floating pill nav */
+
 .nav{margin:0 12px 12px;padding:6px;gap:4px;border-radius:28px;box-shadow:4px 4px 0 var(--fg)}
 .nav button{border-radius:22px;padding:8px 0}
 .nav button.on{background:var(--hi);color:var(--bar)}
 .btn:active{transform:translate(2px,2px)}
 
-/* Password eye: drawn icon (no emoji font) */
+
 .pw button{top:50%;right:8px;transform:translateY(-50%);padding:8px;line-height:0;color:var(--fg);font-size:0}
 .pw button svg{display:block;pointer-events:none}
